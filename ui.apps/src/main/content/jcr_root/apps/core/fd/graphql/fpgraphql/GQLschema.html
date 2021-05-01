@@ -1,0 +1,16 @@
+# This directive maps fields to our Sling data fetchers
+directive @fetcher(
+    name : String,
+    options : String = "",
+    source : String = ""
+) on FIELD_DEFINITION
+
+type Query {
+  FPAssets : [FormsPortalAssets] @fetcher(name:"formsportal/asset")
+}
+
+type FormsPortalAssets {
+    path: String
+    title: String
+    description: String
+}

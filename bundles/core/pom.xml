@@ -399,6 +399,12 @@
             <artifactId>httpclient</artifactId>
         </dependency>
 
+        <!-- Sling GraphQL Core -->
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.graphql.core</artifactId>
+        </dependency>
+
         <!-- AEM and forms sdk versions -->
 
         <!-- the below order of dependencies is very critical -->
