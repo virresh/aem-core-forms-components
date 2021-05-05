@@ -14,9 +14,11 @@
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <!-- Reference for synthetic resource https://gist.github.com/gabrielwalt/0da85e4855070dc6264652269729eddf -->
-<div class="cmp-searchnlister"
-     data-sly-use.logic="searchnlister.js"
-     data-sly-use.model="com.adobe.cq.forms.core.components.models.formsportal.SearchAndLister">
+
+<sly data-sly-use.logic="searchnlister.js"
+     data-sly-use.model="com.adobe.cq.forms.core.components.models.formsportal.SearchAndLister"></sly>
+<div class="cmp-searchnlister">
     <h1 data-sly-text="${model.title}">Forms Portal</h1>
-    <sly data-sly-resource="${logic.button}"></sly>
+    <div data-sly-resource.seperator="${logic.seperator}"></div>
+
 </div>

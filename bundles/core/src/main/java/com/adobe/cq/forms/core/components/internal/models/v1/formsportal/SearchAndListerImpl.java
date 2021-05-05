@@ -51,11 +51,11 @@ public class SearchAndListerImpl extends AbstractComponentImpl implements Search
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Inject
-    private Boolean disableSearch;
+    private boolean disableSearch;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Inject
-    private Boolean disableTextSearch;
+    private boolean disableTextSearch;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Inject

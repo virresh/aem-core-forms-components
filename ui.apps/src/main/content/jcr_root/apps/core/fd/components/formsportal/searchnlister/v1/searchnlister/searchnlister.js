@@ -16,11 +16,15 @@
 
 use(function () {
     return {
-        button: {
-            resourceName: "subbutton",
+        search: {
+            resourceName: "quicksearch",
             "sling:resourceType": "core/wcm/components/search/v1/search",
             "jcr:title": "Synthetic Resource Search",
             "searchRoot": "/content/dam/formsanddocuments"
+        },
+        seperator: {
+            resourceName: "seperator",
+            "sling:resourceType": "core/wcm/components/separator/v1/separator"
         }
     }
 });

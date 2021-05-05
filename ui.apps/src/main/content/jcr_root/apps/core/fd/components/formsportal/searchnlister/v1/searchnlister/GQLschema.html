@@ -6,7 +6,7 @@ directive @fetcher(
 ) on FIELD_DEFINITION
 
 type Query {
-  FPAssets : [FormsPortalAssets] @fetcher(name:"formsportal/asset")
+  FPAssets (withText: String = "") : [FormsPortalAssets] @fetcher(name:"formsportal/asset")
 }
 
 type FormsPortalAssets {

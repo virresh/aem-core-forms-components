@@ -23,6 +23,7 @@ import java.util.Map;
 
 import javax.jcr.Session;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
@@ -46,10 +47,15 @@ public class FormsAssetFetcher implements SlingDataFetcher<Object> {
     private Map<String, String> fetchResourceProperties(Resource r) {
         Map<String, String> result = new HashMap<>();
         ValueMap valueMap = r.getValueMap();
-        if (valueMap.containsKey("jcr:title")) {
+        ValueMap metaDataMap = r.getChild("jcr:content/metadata").getValueMap();
+        if (metaDataMap.containsKey("title")) {
+            result.put("title", metaDataMap.get("title", String.class));
+        } else if (valueMap.containsKey("jcr:title")) {
             result.put("title", valueMap.get("jcr:title", String.class));
         }
-        if (valueMap.containsKey("jcr:description")) {
+        if (metaDataMap.containsKey("dc:description")) {
+            result.put("description", metaDataMap.get("dc:description", String.class));
+        } else if (valueMap.containsKey("jcr:description")) {
             result.put("description", valueMap.get("jcr:description", String.class));
         }
         result.put("path", r.getPath());
@@ -63,9 +69,11 @@ public class FormsAssetFetcher implements SlingDataFetcher<Object> {
         Map<String, String> queryMap = new HashMap<String, String>();
 
         Session session = serviceResourceResolver.adaptTo(Session.class);
-        queryMap.put("type", "nt:unstructured");
-        queryMap.put("1_property", "cq:template");
-        queryMap.put("1_property.value", "/conf/core-components-examples/settings/wcm/templates/content-page");
+        queryMap.put("type", "dam:Asset");
+        if (StringUtils.isNotBlank(env.getArgument("withText"))) {
+            queryMap.put("0_fulltext", env.getArgument("withText"));
+            queryMap.put("0_fulltext.relPath", "jcr:content/metadata");
+        }
 
         PredicateGroup predicateGroup = PredicateGroup.create(queryMap);
         Query query = queryBuilder.createQuery(predicateGroup, session);
