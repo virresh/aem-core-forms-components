@@ -49,11 +49,30 @@
                                                 fieldLabel="Title Text"
                                                 fieldDescription="Title of the Portal"
                                                 name="./title"/>
-                                            <tooltip
+                                            <layout
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                sling:resourceType="granite/ui/components/foundation/form/select"
                                                 fieldLabel="Layout Template"
-                                                name="./layout"/>
+                                                name="./layout">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <layout1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Card"
+                                                        selected="{Boolean}true"/>
+                                                </items>
+                                            </layout>
+                                            <advancedSearch
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                value="{Boolean}true"
+                                                text="Disable Advanced Search"
+                                                name="./disableSearch"/>
+                                            <textSearch
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                value="{Boolean}true"
+                                                text="Disable Text Search"
+                                                name="./disableTextSearch"/>
                                         </items>
                                     </column>
                                 </items>

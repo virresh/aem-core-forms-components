@@ -54,7 +54,7 @@ public interface SearchAndLister extends Component {
      * @return should advanced search be shown
      * @since com.adobe.cq.forms.core.components.models.formsportal 1.0.0
      */
-    default boolean getAdvancedSearchEnabled() {
+    default boolean getAdvancedSearchDisabled() {
         throw new UnsupportedOperationException();
     }
 
@@ -64,7 +64,7 @@ public interface SearchAndLister extends Component {
      * @return Should support full text search
      * @since com.adobe.cq.forms.core.components.models.formsportal 1.0.0
      */
-    default boolean getTextSearchEnabled() {
+    default boolean getTextSearchDisabled() {
         throw new UnsupportedOperationException();
     }
 

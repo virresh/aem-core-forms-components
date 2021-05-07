@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
@@ -50,10 +51,12 @@ public class SearchAndListerImpl extends AbstractComponentImpl implements Search
     private String layout;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(booleanValues = false)
     @Inject
     private boolean disableSearch;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(booleanValues = false)
     @Inject
     private boolean disableTextSearch;
 
@@ -83,12 +86,12 @@ public class SearchAndListerImpl extends AbstractComponentImpl implements Search
     }
 
     @Override
-    public boolean getAdvancedSearchEnabled() {
-        return !disableSearch;
+    public boolean getAdvancedSearchDisabled() {
+        return disableSearch;
     }
 
     @Override
-    public boolean getTextSearchEnabled() {
-        return !disableTextSearch;
+    public boolean getTextSearchDisabled() {
+        return disableTextSearch;
     }
 }
