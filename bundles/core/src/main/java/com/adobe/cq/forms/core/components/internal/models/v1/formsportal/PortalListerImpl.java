@@ -320,7 +320,7 @@ public class PortalListerImpl extends AbstractComponentImpl implements PortalLis
             description = valueMap.get(JcrConstants.JCR_DESCRIPTION, String.class);
         }
 
-        if (metaDataMap != null) {
+        if (metaDataMap != null && metaDataMap.containsKey("allowedRenderFormat")) {
             if (metaDataMap.get("allowedRenderFormat").equals("HTML")) {
                 tooltip = htmlTooltip;
             } else {

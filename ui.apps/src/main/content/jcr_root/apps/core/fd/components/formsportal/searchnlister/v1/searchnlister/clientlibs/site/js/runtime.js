@@ -61,7 +61,7 @@
         },
         updateSearchResults = function (response, id) {
             var componentConfig = componentStore[id],
-                data = response.searchResults;
+                queryResults = response.searchResults;
             componentConfig.nextOffset = queryResults.nextOffset;
             queryResults.data.forEach(function(item) {
                 // choice of tag doesn't matter here because it's unwrapped
@@ -74,7 +74,7 @@
                 addTextWithTooltip(titleElem, item.title);
                 addTextWithTooltip(descElem, item.description);
 
-                linkElem.setAttribute("href", item.path);
+                linkElem.setAttribute("href", item.formLink);
                 linkElem.appendChild(document.createTextNode("HTML5"));
 
                 componentConfig.resultsNode.innerHTML += el.innerHTML;
