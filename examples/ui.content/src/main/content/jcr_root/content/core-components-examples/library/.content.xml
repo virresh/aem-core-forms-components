@@ -62,7 +62,7 @@
                                 width="12"/>
                         </cq:responsive>
                     </teaser_link>
-                    <teaser_link
+                    <teaser_snl
                         cq:styleIds="[1547060090076]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="core-components-examples/components/teaser"
@@ -83,7 +83,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 width="12"/>
                         </cq:responsive>
-                    </teaser_link>
+                    </teaser_snl>
                 </container_1589240808>
             </responsivegrid>
         </root>
