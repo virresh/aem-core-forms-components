@@ -26,6 +26,14 @@ public interface PortalLister {
         throw new UnsupportedOperationException();
     }
 
+    default String getLimit() {
+        throw new UnsupportedOperationException();
+    }
+
+    default Long getNextOffset() {
+        throw new UnsupportedOperationException();
+    }
+
     @ConsumerType
     public interface Item {
         default String getTitle() {
@@ -33,6 +41,10 @@ public interface PortalLister {
         }
 
         default String getDescription() {
+            throw new UnsupportedOperationException();
+        }
+
+        default String getTooltip() {
             throw new UnsupportedOperationException();
         }
 

@@ -15,6 +15,8 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 package com.adobe.cq.forms.core.components.models.formsportal;
 
+import java.util.Map;
+
 import org.osgi.annotation.versioning.ConsumerType;
 
 import com.adobe.cq.wcm.core.components.models.Component;
@@ -75,6 +77,10 @@ public interface SearchAndLister extends Component {
      * @since com.adobe.cq.forms.core.components.models.formsportal 1.0.0
      */
     default long getResultLimit() {
+        throw new UnsupportedOperationException();
+    }
+
+    default Map<String, Object> getSearchResults() {
         throw new UnsupportedOperationException();
     }
 }

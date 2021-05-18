@@ -59,8 +59,9 @@
                 componentConfig.loadmoreNode.style.display = "none";
             }
         },
-        updateSearchResults = function (queryResults, id) {
-            var componentConfig = componentStore[id];
+        updateSearchResults = function (response, id) {
+            var componentConfig = componentStore[id],
+                data = response.searchResults;
             componentConfig.nextOffset = queryResults.nextOffset;
             queryResults.data.forEach(function(item) {
                 // choice of tag doesn't matter here because it's unwrapped

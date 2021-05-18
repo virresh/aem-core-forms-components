@@ -6,5 +6,6 @@
     "advancedSearchDisabled": true,
     "textSearchDisabled"    : true,
     "resultLimit"           : 4,
+    "searchResults"         : {"data":[],"success":"true","nextOffset":0},
     ":type"                 : "core/fd/components/formsportal/searchnlister/v1/searchnlister"
 }

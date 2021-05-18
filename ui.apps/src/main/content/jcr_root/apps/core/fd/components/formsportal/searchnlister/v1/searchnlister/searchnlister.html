@@ -25,7 +25,7 @@
             var componentApp = additionalParams.detail.searchAndLister;
             componentApp.initializeComponent({
                 "id": "${model.id @ context='scriptString'}",
-                "queryPath": "${resource.path @ context='scriptString'}.fpquery.json",
+                "queryPath": "${resource.path @ context='scriptString'}.model.json",
                 "layout": "${model.layout @ context='scriptString'}",
                 "limit": "${model.resultLimit @ context='scriptString'}"
             });

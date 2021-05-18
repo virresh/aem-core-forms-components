@@ -16,6 +16,13 @@
 
 package com.adobe.cq.forms.core.components.internal.models.v1.formsportal.searchnlister;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.jcr.Session;
+
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +33,10 @@ import org.mockito.Mockito;
 import com.adobe.cq.forms.core.Utils;
 import com.adobe.cq.forms.core.components.models.formsportal.SearchAndLister;
 import com.adobe.cq.forms.core.context.FormsCoreComponentTestContext;
+import com.day.cq.search.PredicateGroup;
+import com.day.cq.search.Query;
+import com.day.cq.search.QueryBuilder;
+import com.day.cq.search.result.SearchResult;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
@@ -43,6 +54,22 @@ public class SearchAndListerImplTest {
     @BeforeEach
     public void setUp() {
         context.load().json(TEST_BASE + FormsCoreComponentTestContext.TEST_CONTENT_JSON, CONTENT_ROOT);
+        ResourceResolverFactory mockResolverFactory = Mockito.mock(ResourceResolverFactory.class);
+        QueryBuilder mockQB = Mockito.mock(QueryBuilder.class);
+        Query mockQuery = Mockito.mock(Query.class);
+        SearchResult mockSearchResult = Mockito.mock(SearchResult.class);
+
+        List<Resource> resultList = new ArrayList<>();
+
+        Mockito.when(mockQB.createQuery(Mockito.any(PredicateGroup.class), Mockito.any(Session.class))).thenReturn(mockQuery);
+        Mockito.when(mockQuery.getResult()).thenReturn(mockSearchResult);
+        Mockito.when(mockSearchResult.getTotalMatches()).thenReturn(Long.valueOf(0));
+        Mockito.when(mockSearchResult.getHits()).thenReturn(Mockito.mock(List.class));
+        Mockito.when(mockSearchResult.getStartIndex()).thenReturn(Long.valueOf(0));
+        Mockito.when(mockSearchResult.getResources()).thenReturn(resultList.listIterator());
+
+        context.registerService(ResourceResolverFactory.class, mockResolverFactory);
+        context.registerService(QueryBuilder.class, mockQB);
     }
 
     @Test
