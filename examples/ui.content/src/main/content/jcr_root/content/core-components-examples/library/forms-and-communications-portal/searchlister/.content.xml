@@ -48,7 +48,7 @@
                     sling:resourceType="core-components-examples/components/teaser"
                     actionsEnabled="false"
                     descriptionFromPage="false"
-                    linkURL="https://github.com/adobe/aem-core-forms-components/tree/master/ui.apps/src/main/content/jcr_root/apps/core/fd/components/formsportal/searchnlister/v1/searchnlister"
+                    linkURL="https://github.com/adobe/aem-core-forms-components/tree/master/ui.apps/src/main/content/jcr_root/apps/core/fd/components/formsportal/searchlister/v1/searchlister"
                     textIsRich="true"
                     titleFromPage="false"/>
                 <title_865328580
@@ -90,13 +90,13 @@
                     <component
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="core-components-examples/components/demo/component">
-                        <searchnlister
+                        <searchlister
                             jcr:created="{Date}2019-03-06T14:11:01.819+01:00"
                             jcr:createdBy="admin"
                             jcr:lastModified="{Date}2019-05-21T18:59:35.605+03:00"
                             jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="forms-components-examples/components/searchnlister">
+                            sling:resourceType="forms-components-examples/components/searchlister">
                             <assetFolders jcr:primaryType="nt:unstructured">
                                 <item0 jcr:primaryType="nt:unstructured"
                                        folder="/content/dam/formsanddocuments"/>
@@ -106,7 +106,7 @@
                                        htmlTooltip="Click here to view as HTML"
                                        type="Adaptive Forms"/>
                             </assetSource>
-                        </searchnlister>
+                        </searchlister>
                     </component>
                     <info
                         jcr:primaryType="nt:unstructured"

@@ -26,31 +26,31 @@ Search and Lister component written in HTL.
 The Search and Lister component uses the `com.adobe.cq.forms.core.components.models.formsportal.SearchAndLister` Sling model as its Use-object.
 
 ### Behavior
-Pagination is implemented via Load More button, which loads more results lazily.
+Pagination is implemented via Load More button, which loads more results lazily. Provided clientlib loads at max `resultLimit` element at a time.
 
 ### Edit Dialog Properties
 The following properties are written to JCR for the AEM Forms Portal Link component and are expected to be available as `Resource` properties:
 
 ## BEM Description
 ```
-BLOCK cmp-searchnlister
-    ELEMENT cmp-searchnlister__heading
-    ELEMENT cmp-searchnlister__seperator
-    BLOCK cmp-searchnlister-search
-        ELEMENT cmp-searchnlister-search__box
-            MOD cmp-searchnlister-search__box--text
-        ELEMENT cmp-searchnlister-search__sortbutton
-            MOD cmp-searchnlister-search__sortbutton--wrapper
-            MOD cmp-searchnlister-search__sortbutton--right
-    BLOCK cmp-searchnlister__results
-        ELEMENT cmp-searchnlister__item
-            MOD cmp-searchnlister__item--title
-    ELEMENT cmp-searchnlister__more
+BLOCK cmp-searchlister
+    ELEMENT cmp-searchlister__heading
+    ELEMENT cmp-searchlister__seperator
+    BLOCK cmp-searchlister-search
+        ELEMENT cmp-searchlister-search__box
+            MOD cmp-searchlister-search__box--text
+        ELEMENT cmp-searchlister-search__sortbutton
+            MOD cmp-searchlister-search__sortbutton--wrapper
+            MOD cmp-searchlister-search__sortbutton--right
+    BLOCK cmp-searchlister__results
+        ELEMENT cmp-searchlister__item
+            MOD cmp-searchlister__item--title
+    ELEMENT cmp-searchlister__more
 ```
 ## JavaScript Data Attribute Bindings
-There can be only one search and lister component in a page currently. It initializes itself with the `searchnlister-onload` event.
+There can be only multiple search and lister instances in a page. It is initialized by the clientlib on window state as ready (i.e all dom instances loaded).
 
-A hook attribute from the following should be added to the corresponding element so that the JavaScript is able to target it:
+A hook attribute from the following should be added to the corresponding element/template so that the JavaScript is able to target it:
 
 ```
 data-cmp-hook-formssearch="input"
@@ -59,9 +59,9 @@ data-cmp-hook-formssearch="sort"
 data-cmp-hook-formssearch="results"
 data-cmp-hook-formssearch="itemTemplate"
 data-cmp-hook-formssearch="item"
-data-cmp-hook-formssearch="itemTitle"
-data-cmp-hook-formssearch="description"
-data-cmp-hook-formssearch="formLink"
+data-cmp-hook-item-template="itemTitle"
+data-cmp-hook-item-template="description"
+data-cmp-hook-item-template="formLink"
 data-cmp-hook-formssearch="more"
 ```
 

@@ -18,7 +18,7 @@
 // Reference for synthetic resource https://gist.github.com/gabrielwalt/0da85e4855070dc6264652269729eddf
 
 use(function () {
-    var clientlibsArr = ['core.forms.components.formsportal.searchnlister.v1'];
+    var clientlibsArr = ['core.forms.components.formsportal.searchlister.v1'];
     var layoutPath = 'core/fd/components/commons/v1/itemTemplates/' + this.layout + '.html';
     return {
         clientlibs: clientlibsArr,

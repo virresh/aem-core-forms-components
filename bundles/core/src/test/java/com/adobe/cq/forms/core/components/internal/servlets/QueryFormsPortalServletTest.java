@@ -20,11 +20,11 @@ package com.adobe.cq.forms.core.components.internal.servlets;
 class QueryFormsPortalServletTest {
     // public final AemContext context = FormsCoreComponentTestContext.newAemContext();
     //
-    // private static final String TEST_BASE = "/searchnlister";
+    // private static final String TEST_BASE = "/searchlister";
     // private static final String CONTENT_ROOT = "/content";
     // private static final String ROOT_PAGE = CONTENT_ROOT + "/fpsnl";
-    // private static final String DEFAULT_COMPONENT_PATH = ROOT_PAGE + "/searchnlister-empty";
-    // private static final String CONFIGURED_COMPONENT_V1_PATH = ROOT_PAGE + "/searchnlister-v1";
+    // private static final String DEFAULT_COMPONENT_PATH = ROOT_PAGE + "/searchlister-empty";
+    // private static final String CONFIGURED_COMPONENT_V1_PATH = ROOT_PAGE + "/searchlister-v1";
     // private static final String SAMPLE_FORM = CONTENT_ROOT + "/dam/formsanddocuments/sample-form";
     // private static final String SERVLET_EXPECTED_JSON = TEST_BASE + "/exporter-queryservlet.json";
     //

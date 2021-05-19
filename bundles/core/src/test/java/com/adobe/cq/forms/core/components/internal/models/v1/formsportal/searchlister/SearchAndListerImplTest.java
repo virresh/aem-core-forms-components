@@ -14,7 +14,7 @@
  ~ limitations under the License.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-package com.adobe.cq.forms.core.components.internal.models.v1.formsportal.searchnlister;
+package com.adobe.cq.forms.core.components.internal.models.v1.formsportal.searchlister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,11 +45,11 @@ public class SearchAndListerImplTest {
 
     public final AemContext context = FormsCoreComponentTestContext.newAemContext();
 
-    private static final String TEST_BASE = "/searchnlister";
+    private static final String TEST_BASE = "/searchlister";
     private static final String CONTENT_ROOT = "/content";
     private static final String ROOT_PAGE = CONTENT_ROOT + "/fpsnl";
-    private static final String DEFAULT_COMPONENT_PATH = ROOT_PAGE + "/searchnlister-empty";
-    private static final String CONFIGURED_COMPONENT_V1_PATH = ROOT_PAGE + "/searchnlister-v1";
+    private static final String DEFAULT_COMPONENT_PATH = ROOT_PAGE + "/searchlister-empty";
+    private static final String CONFIGURED_COMPONENT_V1_PATH = ROOT_PAGE + "/searchlister-v1";
 
     @BeforeEach
     public void setUp() {
@@ -75,7 +75,7 @@ public class SearchAndListerImplTest {
     @Test
     public void testExportedType() {
         SearchAndLister component = getInstanceUnderTest(CONFIGURED_COMPONENT_V1_PATH);
-        Assertions.assertEquals("core/fd/components/formsportal/searchnlister/v1/searchnlister", component.getExportedType());
+        Assertions.assertEquals("core/fd/components/formsportal/searchlister/v1/searchlister", component.getExportedType());
     }
 
     @Test

@@ -1,21 +1,21 @@
 {
     "fpsnl": {
-        "searchnlister-empty": {
+        "searchlister-empty": {
             "jcr:primaryType"   : "nt:unstructured",
             "jcr:createdBy"     : "admin",
             "jcr:lastModifiedBy": "admin",
             "jcr:created"       : "Sun May 16 2021 16:47:55 GMT+0000",
             "jcr:lastModified"  : "Sun May 16 2021 16:47:55 GMT+0000",
-            "sling:resourceType": "core/fd/components/formsportal/searchnlister/v1/searchnlister",
+            "sling:resourceType": "core/fd/components/formsportal/searchlister/v1/searchlister",
             "sling:resourceSuperType": "core/fd/components/formsportal/portallister/v1/portallister"
         },
-        "searchnlister-v1": {
+        "searchlister-v1": {
             "jcr:primaryType"   : "nt:unstructured",
             "jcr:createdBy"     : "admin",
             "jcr:lastModifiedBy": "admin",
             "jcr:created"       : "Wed Mar 06 2019 14:11:01 GMT+0100",
             "jcr:lastModified"  : "Tue May 21 2019 18:59:35 GMT+0300",
-            "sling:resourceType": "core/fd/components/formsportal/searchnlister/v1/searchnlister",
+            "sling:resourceType": "core/fd/components/formsportal/searchlister/v1/searchlister",
             "sling:resourceSuperType": "core/fd/components/formsportal/portallister/v1/portallister",
             "layout"            : "Custom",
             "disableSearch"     : "true",
