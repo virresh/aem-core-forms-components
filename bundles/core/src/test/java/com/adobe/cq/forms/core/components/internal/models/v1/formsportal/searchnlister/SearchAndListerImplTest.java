@@ -88,7 +88,7 @@ public class SearchAndListerImplTest {
     public void testEmptySearchAndListerComponent() {
         SearchAndLister component = getInstanceUnderTest(DEFAULT_COMPONENT_PATH);
         Assertions.assertEquals("Forms Portal", component.getTitle());
-        Assertions.assertEquals("Card", component.getLayout());
+        Assertions.assertEquals("card", component.getLayout());
         Assertions.assertFalse(component.getAdvancedSearchDisabled());
         Assertions.assertFalse(component.getTextSearchDisabled());
         Assertions.assertEquals(8, component.getResultLimit());

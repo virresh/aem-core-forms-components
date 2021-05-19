@@ -19,11 +19,13 @@
 
 use(function () {
     var clientlibsArr = ['core.forms.components.formsportal.searchnlister.v1'];
+    var layoutPath = 'core/fd/components/commons/v1/itemTemplates/' + this.layout + '.html';
     return {
         clientlibs: clientlibsArr,
         seperator: {
             resourceName: "seperator",
             "sling:resourceType": "core/wcm/components/separator/v1/separator"
-        }
+        },
+        layoutPath: layoutPath
     }
 });

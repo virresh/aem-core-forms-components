@@ -86,7 +86,7 @@ public class SearchAndListerImpl extends AbstractComponentImpl implements Search
     @Override
     public String getLayout() {
         if (StringUtils.isEmpty(layout)) {
-            return "Card";
+            return "card";
         }
         return layout;
     }

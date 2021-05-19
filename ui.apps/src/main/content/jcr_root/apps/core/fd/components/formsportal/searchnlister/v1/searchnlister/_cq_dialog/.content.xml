@@ -58,6 +58,7 @@
                                                     <layout1
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Card"
+                                                        value="card"
                                                         selected="{Boolean}true"/>
                                                 </items>
                                             </layout>

@@ -24,29 +24,18 @@
     }
 
     var selectors = {
-        item: {
-            self: "[" + ATTR_PREFIX + "=\"item\"]",
-            title: "[" + ATTR_PREFIX + "=\"itemTitle\"]",
-            formLink:  "[" + ATTR_PREFIX + "=\"formLink\"]",
-            description:  "[" + ATTR_PREFIX + "=\"description\"]",
-        },
         results: "[" + ATTR_PREFIX + "=\"results\"]",
         searchInput: "[" + ATTR_PREFIX + "=\"input\"]",
         itemTemplate: "[" + ATTR_PREFIX + "=\"itemTemplate\"]",
         loadMore: "[" + ATTR_PREFIX + "=\"more\"]",
         sortButton: "[" + ATTR_PREFIX + "=\"sort\"]",
         filterButton: "[" + ATTR_PREFIX + "=\"filter\"]",
+        self: "[data-" + NS + '-is="' + IS + '"]',
     };
 
-    var addTextWithTooltip = function (element, text) {
-        if (text) {
-            element.appendChild(document.createTextNode(text));
-            element.setAttribute("title", text);
-        }
-    }
-
-    // All instances are stored in this object with key being their model's id
-    var componentStore = {};
+    // All instances are stored in the store object with key being their model's id
+    // and ItemAPI is used for item creation and injection
+    var componentStore = {}, ItemAPI;
 
     var cleanup = function (id) {
             var componentConfig = componentStore[id];
@@ -64,21 +53,8 @@
                 queryResults = response.searchResults;
             componentConfig.nextOffset = queryResults.nextOffset;
             queryResults.data.forEach(function(item) {
-                // choice of tag doesn't matter here because it's unwrapped
-                var el = document.createElement("span");
-                el.innerHTML = componentConfig.itemTemplate;
-                var titleElem = el.querySelector(selectors.item.title),
-                    linkElem = el.querySelector(selectors.item.formLink),
-                    descElem = el.querySelector(selectors.item.description);
-
-                addTextWithTooltip(titleElem, item.title);
-                addTextWithTooltip(descElem, item.description);
-
-                linkElem.setAttribute("href", item.formLink);
-                linkElem.appendChild(document.createTextNode("HTML5"));
-
-                componentConfig.resultsNode.innerHTML += el.innerHTML;
-            })
+                ItemAPI.createAndInject(componentConfig.itemTemplate, item, componentConfig.resultsNode);
+            });
         },
         queryFPAssets = function (id, offset) {
             var parameters = new URLSearchParams(),
@@ -124,10 +100,9 @@
                 hideLoadMore(id);
             }
         },
-        initializeSearchAndListerComponent = function (config) {
+        initializeSearchAndListerInstance = function (config) {
             if (componentStore[config.id]) {
                 // to prevent multiple initializations of same component
-                // especially needed due to presence of script inside markup tab of demo component
                 return;
             }
             var componentConfig = config;
@@ -169,19 +144,37 @@
             cleanup(config.id);
             queryFPAssets(config.id);
         },
+        queryDomForAllInstances = function () {
+            // This function should execute after DOM is safe to manipulate
+            // and we've received ItemAPI, i.e some equivalent of $.ready
+            var elements = document.querySelectorAll(selectors.self);
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+                initializeSearchAndListerInstance({
+                    "id": element.getAttribute("id"),
+                    "queryPath": element.getAttribute("data-queryPath"),
+                    "limit": element.getAttribute("data-limit")
+                })
+            }
+        },
+        initializeItemAPI = function (api) {
+            if (!ItemAPI) {
+                ItemAPI = api;
+                queryDomForAllInstances();
+            }
+        },
         tmpEvent = {
             detail: {
                 searchAndLister: {
-                    initializeComponent: initializeSearchAndListerComponent
+                    initializeItemAPI: initializeItemAPI,
                 }
             }
         };
 
-    // Using jQuery event api to allow multiple instances to catch this event via namespacing
-    //    $(window).on("searchnlister-onload.instanceid", tmpEvent);
-    // wait for window to prevent any race condition
-    $(window).load(function() {
-        $(window).trigger("searchnlister-onload", tmpEvent);
+    // Using jQuery event api trigger on $.ready
+    // wait for window load to prevent any race condition
+    $(function() {
+        $(window).trigger("core-forms-itemapi-onload", tmpEvent);
     });
 
 }(jQuery));
