@@ -34,9 +34,6 @@
     };
 
     var ItemAPI = {
-        tester: function () {
-            console.log("Item API is available!!!");
-        },
         createAndInject: function (template, data, container) {
             /* data has schema:
                 {
