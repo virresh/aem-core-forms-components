@@ -18,6 +18,7 @@ package com.adobe.cq.forms.core.components.models.formsportal;
 import java.util.List;
 
 import org.osgi.annotation.versioning.ConsumerType;
+import org.osgi.annotation.versioning.ProviderType;
 
 @ConsumerType
 public interface PortalLister {
@@ -51,5 +52,10 @@ public interface PortalLister {
         default String getFormLink() {
             throw new UnsupportedOperationException();
         }
+    }
+
+    @ProviderType
+    public interface LayoutType {
+        public static final String CARD = "card";
     }
 }

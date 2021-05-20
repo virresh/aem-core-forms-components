@@ -49,7 +49,7 @@ import com.adobe.cq.forms.core.components.models.formsportal.SearchAndLister;
     name = ExporterConstants.SLING_MODEL_EXPORTER_NAME,
     extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class SearchAndListerImpl extends AbstractComponentImpl implements SearchAndLister {
-    public static final String RESOURCE_TYPE = "core/fd/components/formsportal/searchnlister/v1/searchnlister";
+    public static final String RESOURCE_TYPE = "core/fd/components/formsportal/searchlister/v1/searchlister";
     private static final String DEFAULT_TITLE = "Forms Portal";
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
@@ -86,7 +86,7 @@ public class SearchAndListerImpl extends AbstractComponentImpl implements Search
     @Override
     public String getLayout() {
         if (StringUtils.isEmpty(layout)) {
-            return "Card";
+            return PortalLister.LayoutType.CARD;
         }
         return layout;
     }

@@ -23,7 +23,7 @@ import com.adobe.cq.wcm.core.components.models.Component;
 
 /**
  *
- * Defines the sling model for {@code /apps/core/fd/components/formsportal/searchnlister} component.
+ * Defines the sling model for {@code /apps/core/fd/components/formsportal/searchlister} component.
  *
  * @since com.adobe.cq.forms.core.components.models.aemform 1.0.0
  */
