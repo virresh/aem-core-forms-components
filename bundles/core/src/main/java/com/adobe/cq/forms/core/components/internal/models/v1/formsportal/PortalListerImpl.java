@@ -129,9 +129,6 @@ public class PortalListerImpl extends AbstractComponentImpl implements PortalLis
         queryStrategies.put("orderby", new QueryStrategy() {
             public void buildQuery(RequestParameter[] params, int predicateID, Map<String, String> queryMap) {
                 String orderByValue = params[0].getString();
-                if (orderByValue.equals("name")) {
-                    orderByValue = "title";
-                }
                 queryMap.put("orderby", "@" + METADATA_NODE_PATH + "/" + orderByValue);
             }
         });

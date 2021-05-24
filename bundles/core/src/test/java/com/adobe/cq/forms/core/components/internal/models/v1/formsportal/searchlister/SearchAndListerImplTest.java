@@ -92,6 +92,9 @@ public class SearchAndListerImplTest {
         Assertions.assertFalse(component.getAdvancedSearchDisabled());
         Assertions.assertFalse(component.getTextSearchDisabled());
         Assertions.assertEquals(8, component.getResultLimit());
+
+        // map at top level should have exactly three keys
+        Assertions.assertEquals(3, component.getSearchResults().size());
     }
 
     @Test
@@ -102,6 +105,7 @@ public class SearchAndListerImplTest {
         Assertions.assertTrue(component.getAdvancedSearchDisabled());
         Assertions.assertTrue(component.getTextSearchDisabled());
         Assertions.assertEquals(4, component.getResultLimit());
+        Assertions.assertEquals(3, component.getSearchResults().size());
     }
 
     @Test
@@ -121,6 +125,9 @@ public class SearchAndListerImplTest {
 
         Mockito.when(component.getResultLimit()).thenCallRealMethod();
         Assertions.assertThrows(UnsupportedOperationException.class, component::getResultLimit);
+
+        Mockito.when(component.getSearchResults()).thenCallRealMethod();
+        Assertions.assertThrows(UnsupportedOperationException.class, component::getSearchResults);
     }
 
     private SearchAndLister getInstanceUnderTest(String resourcePath) {
