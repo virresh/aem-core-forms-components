@@ -58,7 +58,10 @@
             title.textContent = guideNode.title;
         }
 
-        if (guideNode.value && value) {
+        if (guideNode.formattedValue && value) {
+            value.textContent = guideNode.formattedValue;
+        }
+        else if (guideNode.value && value) {
             value.textContent = guideNode.value;
         }
         else if (guideNode._isItem && guideNode.className !== 'guidePanel' && value) {
