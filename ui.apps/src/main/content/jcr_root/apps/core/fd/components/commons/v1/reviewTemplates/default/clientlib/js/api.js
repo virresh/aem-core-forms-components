@@ -59,10 +59,20 @@
         }
 
         if (guideNode.formattedValue && value) {
-            value.textContent = guideNode.formattedValue;
+            if (guideNode.allowRichText) {
+                value.innerHTML = guideNode.formattedValue;
+            }
+            else {
+                value.textContent = guideNode.formattedValue;
+            }
         }
         else if (guideNode.value && value) {
-            value.textContent = guideNode.value;
+            if (guideNode.allowRichText) {
+                value.innerHTML = guideNode.value;
+            }
+            else {
+                value.textContent = guideNode.value;
+            }
         }
         else if (guideNode._isItem && guideNode.className !== 'guidePanel' && value) {
             value.textContent = "-";
@@ -88,6 +98,13 @@
             value.remove();
             action.remove();
         }
+
+        if (guideNode.className === 'guideTextDraw') {
+            action.remove();
+            title.remove();
+            value.innerHTML = value.textContent;
+        }
+
         return row;
     };
 

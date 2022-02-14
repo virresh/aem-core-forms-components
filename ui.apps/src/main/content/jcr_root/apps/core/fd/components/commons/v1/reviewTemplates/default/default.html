@@ -17,12 +17,11 @@
 <template data-sly-template.default>
     <sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}"></sly>
     <sly data-sly-call="${clientLib.all @ categories='core.forms.components.commons.v1.review.templates.default'}"></sly>
-    <script type="x-template"
-            data-cmp-hook-review-template="default">
+    <template data-cmp-hook-review-template="default">
         <div class="cmp-review-form__default cmp-review-form__row" data-cmp-is="container">
             <div class="cmp-review-form__label" data-cmp-hook-review-template="label"></div>
             <div class="cmp-review-form__value" data-cmp-hook-review-template="value"></div>
             <div class="cmp-review-form__action" data-cmp-hook-review-template="action"></div>
         </div>
-    </script>
+    </template>
 </template>
