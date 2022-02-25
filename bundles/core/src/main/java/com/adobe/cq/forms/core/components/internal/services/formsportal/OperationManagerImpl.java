@@ -53,6 +53,7 @@ public class OperationManagerImpl implements OperationManager {
     private void refreshOperationLists() {
         List<Operation> draftOperations = new ArrayList<>();
         List<Operation> submitOperations = new ArrayList<>();
+        List<Operation> pendingSignOperations = new ArrayList<>();
         for (Map.Entry<String, Operation> entry : operations.entrySet()) {
             Operation operation = entry.getValue();
             switch (operation.getType()) {
@@ -62,11 +63,18 @@ public class OperationManagerImpl implements OperationManager {
                 case SUBMISSION:
                     submitOperations.add(operation);
                     break;
+                case PENDING_SIGN:
+                    pendingSignOperations.add(operation);
+                    break;
             }
         }
+        // does sorting in alphabetical order of title
+        // ToDo: configure in authoring?
         operationLists.put(DraftsAndSubmissions.TypeEnum.DRAFT, draftOperations.stream().sorted(Comparator.comparing(
             Operation::getTitle).reversed()).collect(Collectors.toList()));
         operationLists.put(DraftsAndSubmissions.TypeEnum.SUBMISSION, submitOperations);
+        operationLists.put(DraftsAndSubmissions.TypeEnum.PENDING_SIGN, pendingSignOperations.stream().sorted(Comparator.comparing(
+            Operation::getTitle).reversed()).collect(Collectors.toList()));
     }
 
     protected void bindOperation(final Operation operation, Map<String, Object> config) {

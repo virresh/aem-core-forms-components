@@ -32,7 +32,7 @@
 
     var formatTimeAgo = function (date, formatter) {
         var duration = (date - new Date()) / 1000
-        for (let i = 0; i <= DIVISIONS.length; i++) {
+        for (let i = 0; i < DIVISIONS.length; i++) {
             const division = DIVISIONS[i];
             if (Math.abs(duration) < division.amount) {
               return formatter.format(Math.round(duration), division.name);

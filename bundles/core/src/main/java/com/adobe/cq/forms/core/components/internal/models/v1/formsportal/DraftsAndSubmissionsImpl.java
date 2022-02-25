@@ -51,6 +51,7 @@ import com.adobe.cq.forms.core.components.models.formsportal.PortalLister;
 import com.adobe.cq.forms.core.components.models.services.formsportal.OperationManager;
 import com.adobe.fd.fp.api.exception.FormsPortalException;
 import com.adobe.fd.fp.api.models.DraftModel;
+import com.adobe.fd.fp.api.models.PendingSignModel;
 import com.adobe.fd.fp.api.models.SubmitModel;
 import com.adobe.fd.fp.api.service.DraftService;
 import com.adobe.fd.fp.api.service.PendingSignService;
@@ -190,6 +191,18 @@ public class DraftsAndSubmissionsImpl extends PortalListerImpl implements Drafts
                     }
                 } catch (FormsPortalException e) {
                     LOGGER.error("Failed to fetch Form Submissions.", e);
+                }
+                break;
+            case PENDING_SIGN:
+                try {
+                    List<PendingSignModel> list = pendingSignService.getAllPendingSign(query);
+                    for (PendingSignModel pendingSignModel : list) {
+                        PortalLister.Item item = getItem(pendingSignModel.getFormPath(), typeEnum, pendingSignModel.getId(),
+                            pendingSignModel.getLastModifiedTime().getTimeInMillis() + "");
+                        itemList.add(item);
+                    }
+                } catch (FormsPortalException e) {
+                    LOGGER.error("Failed to fetch Pending Signs forms.", e);
                 }
                 break;
         }

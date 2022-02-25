@@ -25,7 +25,7 @@ The AEM Forms Portal Drafts and Submissions component uses the `com.adobe.cq.for
 ### Edit Dialog Properties
 The following properties are written to JCR for the AEM Forms Portal DraftsandSubmissions component and are expected to be available as `Resource` properties:
 1. `./title` - specifies title of the component to be displayed.
-2. `./type` - specifies forms portal records type - Drafts / Submissions.
+2. `./type` - specifies forms portal records type - Drafts / Submissions / Pending Sign Forms.
 3. `./layout` - specifies layout of the resultant forms portal records to be displayed.
 4. `./limit` - specifies the number of resultant forms portal records to be displayed at a time.
 

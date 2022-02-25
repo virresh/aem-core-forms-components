@@ -29,10 +29,12 @@ public interface DraftsAndSubmissions extends PortalLister {
         throw new UnsupportedOperationException();
     }
 
+    // changes here would typically also have an accompanying change in OperationManager implementation
     @ProviderType
     public enum TypeEnum {
         DRAFT,
-        SUBMISSION
+        SUBMISSION,
+        PENDING_SIGN
     }
 
 }
