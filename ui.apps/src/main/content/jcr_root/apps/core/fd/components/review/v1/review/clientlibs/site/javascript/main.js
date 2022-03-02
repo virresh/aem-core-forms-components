@@ -17,6 +17,8 @@
 (function($, guidelib) {
 
     /**
+     * These are registered by the individual views
+     * 
      * COMPONENT['<viewName>'] = {
      *      className: string,
      *      viewInjector: function(guideNode, guideBridge) {}
@@ -24,10 +26,10 @@
      */
 
     var COMPONENT = {};
-    const UPDATE_EVENT = "cmp-review-update-event";
-    const REGISTER_EVENT = 'core-forms-review-register-view';
+    const UPDATE_EVENT = "cmp-review-update-event";  // event for updation of UI
+    const REGISTER_EVENT = 'core-forms-review-register-view';  // event for registering a view injector
     
-    const RUNTIME_TYPE_ATTR = "cmp-runtime-type";
+    const RUNTIME_TYPE_ATTR = "cmp-runtime-type";  // comes from sling model at runtime
 
     const SELECTORS = {
         'container': ".cmp-review-container"
@@ -35,10 +37,12 @@
 
     COMPONENT.init = function () {
         // called only after guideBridge is available
-        COMPONENT.bridge.on("elementNavigationChanged" , function(event, payload) {
-            var component = payload.target;
-            console.log("element navigation event triggered!");
-        });
+        // ToDo: Evaluate if this is required and then remove/modify this code accordingly
+        // COMPONENT.bridge.on("elementNavigationChanged" , function(event, payload) {
+        //     var component = payload.target;
+        //     console.log("element navigation event triggered!");
+        // });
+        console.log("A review component initialised!");
     };
 
     COMPONENT.getHTMLView = function (node, componentID) {
@@ -78,7 +82,7 @@
         // in component authoring
         var elementViews = {};
         /**
-         * Structure of a node:
+         * Structure of a node inside elementViews:
          * 'som' : {
          *      som: string,
          *      view: jQuery Object containing it's review HTML
